@@ -93,11 +93,13 @@ Medoc Backend/
 
 3. **Configure environment variables**
    
-   The `.env` file is already configured with:
+   Create a `.env` file in the root directory with:
    ```env
    PORT=3000
-   MONGO_URI=
+   MONGO_URI=your_mongodb_connection_string_here
    ```
+   
+   **Note**: Never commit `.env` file to version control. Keep it private and secure.
 
 4. **Start the server**
    ```bash
@@ -108,60 +110,7 @@ Medoc Backend/
    npm start
    ```
 
-The server will run on `http://localhost:3000`
-
-## 📡 API Endpoints
-
-### Token Management (`/api/tokens`)
-```
-POST /api/tokens
-```
-Generate a new token for a patient
-- **Request Body**:
-  ```json
-  {
-    "patientName": "John Doe",
-    "doctorId": "doctor_id_here"
-  }
-  ```
-- **Response**:
-  ```json
-  {
-    "tokenNumber": 5,
-    "tokenId": "token_id_here"
-  }
-  ```
-
-### Doctor Management (`/api/doctors`)
-```
-GET /api/doctors
-```
-Get all registered doctors
-
-```
-POST /api/doctors
-```
-Register a new doctor
-- **Request Body**:
-  ```json
-  {
-    "name": "Dr. Smith",
-    "specialization": "Cardiology",
-    "availableFrom": "09:00",
-    "availableTo": "17:00"
-  }
-  ```
-
-```
-GET /api/doctors/:doctorId/slots
-```
-Get all slots for a specific doctor
-
-### Simulation (`/api/simulate`)
-```
-GET /api/simulate/start
-```
-Start simulation and retrieve all tokens with doctor details
+The server will run on port `3000`
 
 ## 📊 Database Models
 
@@ -231,24 +180,13 @@ Uses Nodemon for auto-restart on file changes
 - Ensure MongoDB instance is running before starting server
 
 ### Testing Endpoints
-Use tools like Postman or curl to test:
-```bash
-# Create a doctor
-curl -X POST http://localhost:3000/api/doctors \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Dr. John","specialization":"Cardiology"}'
-
-# Generate a token
-curl -X POST http://localhost:3000/api/tokens \
-  -H "Content-Type: application/json" \
-  -d '{"patientName":"Patient Name","doctorId":"doctor_id"}'
-```
+Use tools like Postman or curl to test API endpoints. Refer to the **API Endpoints** section above for request/response formats.
 
 ## 🐛 Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
-| MongoDB connection error | Check `MONGO_URI` in `.env` and ensure MongoDB is running |
+| MongoDB connection error | Verify `MONGO_URI` in `.env` is correct and MongoDB is running |
 | Port 3000 already in use | Change `PORT` in `.env` or kill process: `lsof -i :3000` |
 | CORS errors from frontend | CORS is enabled in `app.js`. Verify frontend URL |
 | Token creation fails | Ensure `doctorId` exists and `patientName` is provided |
@@ -277,7 +215,7 @@ The `frontend/` directory contains:
 - **script.js** - API communication
 - **style.css** - UI styling
 
-Access at `http://localhost:3000`
+Frontend is served on the same server as the backend
 
 ## 🚀 Future Enhancements
 
@@ -295,6 +233,7 @@ Access at `http://localhost:3000`
 ISC
 
 ## 👤 Author
+
 Kailash
 
 ---

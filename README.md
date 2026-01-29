@@ -96,13 +96,7 @@ Medoc Backend/
    The `.env` file is already configured with:
    ```env
    PORT=3000
-   MONGO_URI=mongodb+srv://kailash_db_user:uHgOEQl1nuv6Kbjw@cluster0.lgu5i9x.mongodb.net/?appName=Cluster0
-   ```
-   
-   For local MongoDB, use:
-   ```env
-   MONGO_URI=mongodb://localhost:27017/medoc
-   PORT=3000
+   MONGO_URI=
    ```
 
 4. **Start the server**

@@ -301,8 +301,7 @@ Access at `http://localhost:3000`
 ISC
 
 ## 👤 Author
-
-Medoc Development Team
+Kailash
 
 ---
 
